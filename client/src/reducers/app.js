@@ -1,7 +1,6 @@
-import Cookie from 'js-cookie';
 import { getTranslations } from 'i18n';
 
-const language = Cookie.get('language') || navigator.language || 'en';
+const language = navigator.language || 'en';
 
 const initialState = {
   modalComponent: null,
@@ -9,14 +8,16 @@ const initialState = {
   windowIsFocused: true,
   unreadMessageCount: 0,
   soundIsEnabled: true,
-  notificationIsEnabled: false,
+  notificationIsEnabled: true,
   notificationIsAllowed: null,
   socketConnected: false,
   language,
   translations: getTranslations(language),
 };
 
-const app = (state = initialState, action) => {
+const app = (receivedState, action) => {
+  const state = { ...initialState, ...receivedState };
+
   switch (action.type) {
     case 'OPEN_MODAL':
       return {
