@@ -94,7 +94,6 @@ const WithNewMessageNotification = WrappedComponent => {
         switch (Notification.permission) {
           case 'granted':
             this.props.toggleNotificationAllowed(true);
-            this.props.toggleNotificationEnabled(true);
             break;
           case 'denied':
             this.props.toggleNotificationAllowed(false);

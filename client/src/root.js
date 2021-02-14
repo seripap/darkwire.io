@@ -10,8 +10,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import shortId from 'shortid';
 import Home from 'components/Home';
 import { hasTouchSupport } from './utils/dom';
+import { loadPersistedState, persistState } from './utils/persistence';
 
-const store = configureStore();
+const store = configureStore(loadPersistedState());
+
+store.subscribe(() => persistState(store));
 
 export default class Root extends Component {
   componentWillMount() {

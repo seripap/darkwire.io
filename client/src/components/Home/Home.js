@@ -150,7 +150,7 @@ class Home extends Component {
 
   createUser() {
     return new Promise(async resolve => {
-      const username = shortId.generate();
+      const username = this.props.username || shortId.generate();
 
       const encryptDecryptKeys = await crypto.createEncryptDecryptKeys();
       const exportedEncryptDecryptPrivateKey = await crypto.exportKey(encryptDecryptKeys.privateKey);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RoomLink from 'components/RoomLink';
 import { styles } from './styles.module.scss';
-import Cookie from 'js-cookie';
 import T from 'components/T';
 
 class Settings extends Component {
@@ -24,7 +23,6 @@ class Settings extends Component {
 
   handleLanguageChange(evt) {
     const language = evt.target.value;
-    Cookie.set('language', language);
     this.props.setLanguage(language);
   }
 
